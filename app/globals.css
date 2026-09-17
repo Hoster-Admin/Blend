@@ -1,0 +1,124 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --font-arabic: "IBM Plex Sans Arabic", sans-serif;
+  --font-english: "Inter", sans-serif;
+  --font-sans: var(--font-english);
+  --background: #ffffff;
+  --textColor: #14181c;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-textColor: var(--textColor);
+  --color-mainColor: #7FE22B;
+  --color-secondColor: #E0FBC0;
+  --color-grayBody: #f3f5f7;
+  --color-shadeColor: #00271A;
+  --color-tintColor: #E0FBC0;
+  --font-sans: var(--font-english);
+  --animate-fadeIn: fadeIn 0.5s ease-out;
+
+  /* Animation */
+  --animate-slideFade: slideFade 0.5s ease-in-out;
+
+  @keyframes slideFade {
+    0% {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  --animate-scroll: scroll 20s linear infinite;
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  --animate-bounce-up-down: bounce-up-down 1s ease-in-out infinite;
+
+  @keyframes bounce-up-down {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+  --animate-scaleUp: scaleUp 0.8s ease-out forwards;
+
+  @keyframes scaleUp {
+    0% {
+      transform: scale(0) translateY(50px);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+  }
+}
+.initial-hidden {
+  opacity: 0;
+}
+
+/* global.css */
+.delay-1 {
+  animation-delay: 0.5s;
+}
+.delay-2 {
+  animation-delay: 1s;
+}
+.delay-3 {
+  animation-delay: 1.5s;
+}
+
+/* 🌙 Dark mode overrides */
+.dark {
+  --background: #14181c;
+  --secondColor: #2d3135;
+  --textColor: #ffffff;
+  --color-mainColor: #34f3b6;
+  --color-shadeColor: #44ffcb;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--textColor);
+  font-weight: 400;
+}
+
+[dir="rtl"] {
+  --font-sans: var(--font-arabic);
+}
+
+@theme {
+  --animate-float-soft: float-soft 6s ease-in-out infinite;
+  @keyframes float-soft {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
